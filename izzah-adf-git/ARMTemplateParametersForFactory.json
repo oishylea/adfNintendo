@@ -4,6 +4,15 @@
 	"parameters": {
 		"factoryName": {
 			"value": "izzah-adf-git"
+		},
+		"LS_abs_nintendo_connectionString": {
+			"value": ""
+		},
+		"Ls_adls_data_engineering_dl_accountKey": {
+			"value": ""
+		},
+		"Ls_adls_data_engineering_dl_properties_typeProperties_url": {
+			"value": "https://formula1dl0206.dfs.core.windows.net/"
 		}
 	}
 }
