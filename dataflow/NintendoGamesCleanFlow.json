@@ -27,6 +27,9 @@
 				},
 				{
 					"name": "sortbyUserScore"
+				},
+				{
+					"name": "NintendoGamesbyYear"
 				}
 			],
 			"scriptLines": [
@@ -46,6 +49,7 @@
 				"     ignoreNoFilesFound: false) ~> NintendoGames",
 				"NintendoGames derive(year = year(toDate(date, 'MMM d, yyyy'))) ~> derivedColumn1",
 				"derivedColumn1 sort(desc(user_score, false)) ~> sortbyUserScore",
+				"derivedColumn1 aggregate(NintendoGamesCount = count()) ~> NintendoGamesbyYear",
 				"sortbyUserScore sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     partitionFileNames:['NintendoGamesClean.csv'],",
