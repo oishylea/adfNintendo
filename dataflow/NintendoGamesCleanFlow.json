@@ -50,7 +50,8 @@
 				"     validateSchema: false,",
 				"     partitionFileNames:['NintendoGamesClean.csv'],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> NintendoGamesClean"
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> NintendoGamesClean"
 			]
 		}
 	}
