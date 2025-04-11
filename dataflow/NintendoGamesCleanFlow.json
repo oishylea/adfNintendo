@@ -66,7 +66,7 @@
 				"     partitionBy('hash', 1)) ~> NintendoGamesClean",
 				"NintendoGamesbyYear sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     partitionFileNames:['NintendoGamesbyYear'],",
+				"     partitionFileNames:['NintendoGamesbyYear.csv'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     partitionBy('hash', 1)) ~> NintendoGamesYear"
