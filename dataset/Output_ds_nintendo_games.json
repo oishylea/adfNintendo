@@ -1,0 +1,22 @@
+{
+	"name": "Output_ds_nintendo_games",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_abs_nintendo",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "processed"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

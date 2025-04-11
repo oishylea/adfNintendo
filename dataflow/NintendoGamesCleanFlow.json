@@ -1,0 +1,56 @@
+{
+	"name": "NintendoGamesCleanFlow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_nintendo_games",
+						"type": "DatasetReference"
+					},
+					"name": "NintendoGames"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Output_ds_nintendo_games",
+						"type": "DatasetReference"
+					},
+					"name": "NintendoGamesClean"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "sortbyUserScore"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          meta_score as string,",
+				"          title as string,",
+				"          platform as string,",
+				"          date as string,",
+				"          user_score as string,",
+				"          link as string,",
+				"          esrb_rating as string,",
+				"          developers as string,",
+				"          genres as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> NintendoGames",
+				"NintendoGames derive(year = year(toDate(date, 'MMM d, yyyy'))) ~> derivedColumn1",
+				"derivedColumn1 sort(desc(user_score, false)) ~> sortbyUserScore",
+				"sortbyUserScore sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> NintendoGamesClean"
+			]
+		}
+	}
+}
