@@ -48,6 +48,7 @@
 				"derivedColumn1 sort(desc(user_score, false)) ~> sortbyUserScore",
 				"sortbyUserScore sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     partitionFileNames:['NintendoGamesClean.csv'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> NintendoGamesClean"
 			]
