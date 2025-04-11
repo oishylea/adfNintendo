@@ -37,6 +37,9 @@
 				},
 				{
 					"name": "NintendoGamesbyYear"
+				},
+				{
+					"name": "sortbyYear"
 				}
 			],
 			"scriptLines": [
@@ -58,13 +61,14 @@
 				"derivedColumn1 sort(desc(user_score, false)) ~> sortbyUserScore",
 				"derivedColumn1 aggregate(groupBy(year),",
 				"     NintendoGamesCount = count()) ~> NintendoGamesbyYear",
+				"NintendoGamesbyYear sort(desc(year, false)) ~> sortbyYear",
 				"sortbyUserScore sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     partitionFileNames:['NintendoGamesClean.csv'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     partitionBy('hash', 1)) ~> NintendoGamesClean",
-				"NintendoGamesbyYear sink(allowSchemaDrift: true,",
+				"sortbyYear sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     partitionFileNames:['NintendoGamesbyYear.csv'],",
 				"     skipDuplicateMapInputs: true,",
