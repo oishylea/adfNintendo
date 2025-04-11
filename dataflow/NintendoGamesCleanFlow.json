@@ -68,7 +68,8 @@
 				"     validateSchema: false,",
 				"     partitionFileNames:['NintendoGamesbyYear'],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> NintendoGamesYear"
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> NintendoGamesYear"
 			]
 		}
 	}
