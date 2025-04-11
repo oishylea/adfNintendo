@@ -19,6 +19,13 @@
 						"type": "DatasetReference"
 					},
 					"name": "NintendoGamesClean"
+				},
+				{
+					"dataset": {
+						"referenceName": "Output_ds_nintendo_games",
+						"type": "DatasetReference"
+					},
+					"name": "NintendoGamesYear"
 				}
 			],
 			"transformations": [
@@ -56,7 +63,12 @@
 				"     partitionFileNames:['NintendoGamesClean.csv'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     partitionBy('hash', 1)) ~> NintendoGamesClean"
+				"     partitionBy('hash', 1)) ~> NintendoGamesClean",
+				"NintendoGamesbyYear sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['NintendoGamesbyYear'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> NintendoGamesYear"
 			]
 		}
 	}
